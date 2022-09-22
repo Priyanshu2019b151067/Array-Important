@@ -1,0 +1,26 @@
+You are given a list of integers nums where each integer occurs exactly three times except for one which occurs once. 
+Return the lone integer.
+Bonus: solve it in \mathcal{O}(1)O(1) space.
+
+
+> Using unordered_map we can definitely do it but it requires O(N) space in worst case.
+> Using the sorting Approach to solve the problem as by sorting all the similar elements will be close to each other 
+  so now we can easily check if they are in a group of 3 or not.
+  T.C - O(nlogn) S.C - O(n)
+> Third Approach uses BitManipulation to solve the problem so for every bit position we will be finding the number of set bits
+  and count them find their count%3 and add the value to our answer.
+int ans = 0;
+   for(int i = 0;i < 32;i++){
+       int c = 0;
+       for(auto x : arr){
+             if(x&(1 << i)){
+                 c++;
+             }
+       }
+       c = c%3;
+       ans += (c << i);
+   }
+   return ans;
+
+   T.C - O(32*N) 
+   S.C - O(1)
